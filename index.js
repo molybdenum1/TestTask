@@ -32,12 +32,45 @@ let data = `{
       }
     ]
   }`
-  data = JSON.parse(data)
+
+data = JSON.parse(data)
 console.log(data)
 
+let amount = 10000
+
+let curLoans = document.getElementById("cur-loans")
+
+let header = document.createElement('h1');
+header.innerText = "Current Loans";
+curLoans.appendChild(header)
+let div = document.createElement('div');
+let i = 1;
+
 for(let arr of data.loans){
-    console.log(arr)
+    
+    let div = document.createElement('div');
+    div.className = 'ex'
+    let h2 = document.createElement("h2")
+    h2.innerText = "Cur Loan" + i
+    div.appendChild(h2)
+    let span = document.createElement("span")
+    span.innerText = "Some describe"
+    div.appendChild(span)
+    let btn = document.createElement("button")
+    btn.innerText = "Invest"
+    div.appendChild(btn)
+    //console.log(arr)
     for(let key in arr){
+        btn.id = arr['id']
         console.log(key + " " + arr[key])
+        
     }
+    curLoans.appendChild(div)
+    i= i+1;
 }
+
+let footer = document.createElement('div')
+let para = document.createElement('p')
+para.innerText = 'total amount availible for investments ' + amount
+footer.appendChild(para)
+curLoans.appendChild(footer)
